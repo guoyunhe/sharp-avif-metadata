@@ -1,10 +1,10 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import sharp from 'sharp';
-import { unlinkSync, existsSync, mkdirSync } from 'fs';
+import { unlinkSync, existsSync } from 'fs';
 import { join } from 'path';
 
 describe('AVIF metadata test', () => {
-  const outputPath = join(process.cwd(), 'test', 'output.avif');
+  const outputPath = join(process.cwd(), 'output.avif');
   
   afterEach(() => {
     // Clean up the generated AVIF file
@@ -16,12 +16,6 @@ describe('AVIF metadata test', () => {
   it('should convert PNG to AVIF and verify format', async () => {
     // Read the test PNG image
     const inputPath = join(process.cwd(), 'test-image.png');
-    
-    // Ensure test directory exists
-    const testDir = join(process.cwd(), 'test');
-    if (!existsSync(testDir)) {
-      mkdirSync(testDir, { recursive: true });
-    }
     
     // Convert PNG to AVIF
     await sharp(inputPath)
