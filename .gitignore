@@ -1,0 +1,5 @@
+node_modules/
+*.avif
+dist/
+coverage/
+.DS_Store
